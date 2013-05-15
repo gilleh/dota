@@ -26,9 +26,6 @@ class Welcome extends CI_Controller {
 		$data['heroes'] = new SimpleXMLElement($xml);
 		
 		xml_convert($data['heroes']);
-echo "<pre>";
-print_r($data['heroes']);
-echo "</pre>";
 		
         return $this->load->view($view, $data, true);
 	}

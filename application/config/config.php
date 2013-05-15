@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'chrisg.eu';
+$config['base_url']	= 'http://chrisg.eu/';
 
 /*
 |--------------------------------------------------------------------------
