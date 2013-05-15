@@ -8,7 +8,7 @@
 <body>
 <?php
 echo "<pre>";
-echo $heroes;
+print_r($heroes);
 echo "</pre>";
 
 ?>

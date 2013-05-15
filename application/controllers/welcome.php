@@ -17,7 +17,7 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index($view = 'welcome')
 	{
 		//$this->load->view('welcome_message');
 		$this->load->helper('xml');
@@ -26,8 +26,11 @@ class Welcome extends CI_Controller {
 		$data['heroes'] = new SimpleXMLElement($xml);
 		
 		xml_convert($data['heroes']);
-				
-        return $this->load->view('welcome', $data, true);
+echo "<pre>";
+print_r($data['heroes']);
+echo "</pre>";
+		
+        return $this->load->view($view, $data, true);
 	}
 }
 
