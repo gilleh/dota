@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Match extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -17,22 +17,9 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index($view = 'welcome')
-	{
-		//$this->load->view('welcome_message');
-		$this->load->helper('xml');
-		$url = "heroes.xml";
-		$xml = file_get_contents($url);
-		$data['heroes'] = new SimpleXMLElement($xml);
-		
-		$this->load->helper('xml');
-		$url = "matches.xml";
-		$xml = file_get_contents($url);
-		$data['matches'] = new SimpleXMLElement($xml);
-		
-		xml_convert($data['heroes']);
-		xml_convert($data['matches']);
-		
+	public function index($view = 'match')
+	{		
+		echo "Match";
         return $this->load->view($view, $data);
 	}
 }

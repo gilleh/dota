@@ -76,7 +76,7 @@ for($i=0;$i<$totalm;$i++)
 {
 	$match = $matches->matches->match;
 	echo '<div class="matchbox">';
-	echo "<div>Match Id: ".$match[$i]->match_id.' <a href="match/'.$match[$i]->match_id.'">View Match</a></div>';
+	echo "<div>Match Id: ".$match[$i]->match_id.' <a href="viewmatch/'.$match[$i]->match_id.'">View Match</a></div>';
 	echo "Match type: ".$matchtype[(int)$match[$i]->lobby_type].'<br>';
 	echo "Dire<br>";
 	for ($x=0;$x<count($match[$i]->players->player);$x++)
