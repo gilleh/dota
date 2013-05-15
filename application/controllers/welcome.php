@@ -20,6 +20,14 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		//$this->load->view('welcome_message');
+		$this->load->helper('xml');
+		$url = "https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
+		$xml = file_get_contents($url);
+		$data['heroes'] = new SimpleXMLElement($xml);
+		
+		xml_convert($data['heroes']);
+				
+        return $this->load->view($view, $data, true);
 	}
 }
 
