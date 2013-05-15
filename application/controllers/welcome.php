@@ -27,7 +27,7 @@ class Welcome extends CI_Controller {
 		
 		xml_convert($data['heroes']);
 				
-        return $this->load->view($view, $data, true);
+        return $this->load->view('welcome', $data, true);
 	}
 }
 
