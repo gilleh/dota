@@ -2,13 +2,12 @@
 
 class Update extends CI_Controller {
 	
-	
 	public function index()
 	{	
-		$this->load->model('update_model');
+        $this->load->model('Update_model');
 		$this->load->helper('xml');
 		echo 'Updating latest matches...<br/>';
-		$url = "matches.xml";
+		$url = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
 		$file = file_get_contents($url);
 		$matches = new SimpleXMLElement($file);
 		
@@ -42,6 +41,7 @@ class Update extends CI_Controller {
 			   'player9' => $match[$i]->players->player[8]->account_id.'|'.$match[$i]->players->player[8]->player_slot.'|'.$match[$i]->players->player[8]->hero_id,
 			   'player10' => $match[$i]->players->player[9]->account_id.'|'.$match[$i]->players->player[9]->player_slot.'|'.$match[$i]->players->player[9]->hero_id,
 			);
+			
 			$this->update_model->updateMatches($data);
 		} 
 		echo 'Successfully updated matches...';
