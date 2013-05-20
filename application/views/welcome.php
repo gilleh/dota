@@ -55,6 +55,12 @@ for($i=0;$i<$totalh;$i++)
 	if ($heroname != "legion_commander" && $heroname != "abaddon")
 	{		
 		$imgsrc = "http://media.steampowered.com/apps/dota2/images/heroes/".$heroname."_hphover.png";
+		if ($heroname == "magnataur"){
+			$heroname = "magnus";
+		} 
+		if ($heroname == "obsidian_destroyer"){
+			$heroname = "outworld_devourer";				
+		}
 		$heroname = str_replace("_", " ", $heroname);
 		//echo '<div class="herorow"><span class="heroname">'.ucfirst($heroname).'</span><img src="'.$imgsrc.'"></div>';
 		$heroa[(int)$heroes->heroes->hero[$i]->id][0] = ucwords($heroname);
