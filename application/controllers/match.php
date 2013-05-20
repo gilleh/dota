@@ -2,27 +2,21 @@
 
 class Match extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -  
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in 
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see http://codeigniter.com/user_guide/general/urls.html
-	 */
-	public function index($view = 'match')
+	public function index($id)
 	{		
-		echo "Match";
-        return $this->load->view($view, $data);
+		$this->load->helper('xml');
+		$url = "heroes.xml";
+		$xml = file_get_contents($url);
+		$data['heroes'] = new SimpleXMLElement($xml);
+		//$url = "match_195937703.xml";
+		$url ="https://api.steampowered.com/IDOTA2Match_570/GetMatchDetails/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML&match_id=".$id;
+		$xml = file_get_contents($url);
+		$data['match'] = new SimpleXMLElement($xml);
+		
+		xml_convert($data['heroes']);
+		xml_convert($data['match']);
+		$data['match_id'] = $id;
+		
+        return $this->load->view('match', $data);
 	}
 }
-
-/* End of file welcome.php */
-/* Location: ./application/controllers/welcome.php */

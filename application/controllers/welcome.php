@@ -26,7 +26,7 @@ class Welcome extends CI_Controller {
 		$data['heroes'] = new SimpleXMLElement($xml);
 		
 		$this->load->helper('xml');
-		$url = "matches.xml";
+		$url = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
 		$xml = file_get_contents($url);
 		$data['matches'] = new SimpleXMLElement($xml);
 		

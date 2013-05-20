@@ -64,6 +64,7 @@ for($i=0;$i<$totalh;$i++)
 
 $totalm = count($matches->matches->match);
 $matchtype = array();
+$matchtype[6] = "Not set";
 $matchtype[5] = "Team Match";
 $matchtype[4] = "Co-op with Bots";
 $matchtype[3] = "Tutorial";

@@ -38,7 +38,8 @@
 |
 */
 
-$route['match'] = "match";
+$route['update'] = "update";
+$route['match/(:any)'] = "match/index/$1";
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 $route['chris/gill/via'] = 'welcome';
