@@ -4,7 +4,7 @@ class Update extends CI_Controller {
 	
 	public function index()
 	{	
-        $this->load->model('Update_model');
+        $this->load->model('update_model');
 		$this->load->helper('xml');
 		echo 'Updating latest matches...<br/>';
 		$url = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
