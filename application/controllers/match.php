@@ -2,7 +2,7 @@
 
 class Match extends CI_Controller {
 
-	public function index($id = FALSE)
+	public function index($view = 'match', $id = FALSE)
 	{		
 		if ($id){
 			$this->load->helper('xml');
@@ -17,7 +17,9 @@ class Match extends CI_Controller {
 			xml_convert($data['heroes']);
 			xml_convert($data['match']);
 			$data['match_id'] = $id;
-	        return $this->load->view('match', $data);
+	        return $this->load->view($view, $data);
+    	} else {
+    		return $this->load->view('welcome', $data);
     	}
 	}
 }
