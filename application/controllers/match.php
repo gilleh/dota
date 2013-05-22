@@ -19,7 +19,7 @@ class Match extends CI_Controller {
 			$data['match_id'] = $id;
 	        return $this->load->view($view, $data);
     	} else {
-    		return $this->load->view('welcome');
+    		return $this->load->controller('welcome');
     	}
 	}
 }
