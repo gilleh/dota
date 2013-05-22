@@ -19,7 +19,7 @@ class Match extends CI_Controller {
 			$data['match_id'] = $id;
 	        return $this->load->view($view, $data);
     	} else {
-    		header('Location: http://chrisg.eu/dota/')
+    		header('Location: http://chrisg.eu/dota/');
     	}
 	}
 }
