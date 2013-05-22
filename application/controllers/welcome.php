@@ -20,7 +20,7 @@ class Welcome extends CI_Controller {
 	public function index($view = 'welcome')
 	{
 		//$this->load->view('welcome_message');
-		$this->load-model('welcome_model');
+		$this->load->model('welcome_model');
 		$this->load->helper('xml');
 		$url = "heroes.xml";
 		$xml = file_get_contents($url);
