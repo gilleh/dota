@@ -4,6 +4,7 @@ class Match extends CI_Controller {
 
 	public function index($id)
 	{		
+		echo $id;
 		$this->load->helper('xml');
 		$url = "heroes.xml";
 		$xml = file_get_contents($url);
