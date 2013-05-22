@@ -33,12 +33,9 @@ class Welcome extends CI_Controller {
 		
 		xml_convert($data['heroes']);
 		//xml_convert($data['matches']);
-		$data['matches'] = $this->welcome_model->getMatches();
-		foreach ($data['matches']->result() as $row)
-		{
-			var_dump($row->id);
-		}
+		$data['matches'] = $this->welcome_model->getMatches()->result();
 		
+
 		var_dump($data['matches']);
 		exit();
         return $this->load->view($view, $data); 
