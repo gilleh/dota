@@ -20,20 +20,21 @@ class Welcome extends CI_Controller {
 	public function index($view = 'welcome')
 	{
 		//$this->load->view('welcome_message');
+		$this->load-model('welcome_model');
 		$this->load->helper('xml');
 		$url = "heroes.xml";
 		$xml = file_get_contents($url);
 		$data['heroes'] = new SimpleXMLElement($xml);
 		
-		$this->load->helper('xml');
-		$url = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
-		$xml = file_get_contents($url);
-		$data['matches'] = new SimpleXMLElement($xml);
+		//$this->load->helper('xml');
+		//$url = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
+		//$xml = file_get_contents($url);
+		//$data['matches'] = new SimpleXMLElement($xml);
 		
 		xml_convert($data['heroes']);
-		xml_convert($data['matches']);
-		
-        return $this->load->view($view, $data);
+		//xml_convert($data['matches']);
+		$data['matches'] = $this->welcome_model->getMatches();
+        return $this->load->view($view, $data); 
 	}
 }
 

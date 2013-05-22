@@ -40,7 +40,7 @@ class Update extends CI_Controller {
 			   'player8' => $match[$i]->players->player[7]->account_id.'|'.$match[$i]->players->player[7]->player_slot.'|'.$match[$i]->players->player[7]->hero_id,
 			   'player9' => $match[$i]->players->player[8]->account_id.'|'.$match[$i]->players->player[8]->player_slot.'|'.$match[$i]->players->player[8]->hero_id,
 			   'player10' => $match[$i]->players->player[9]->account_id.'|'.$match[$i]->players->player[9]->player_slot.'|'.$match[$i]->players->player[9]->hero_id,
-			);
+			); 
 			
 			$this->update_model->updateMatches($data);
 		} 
