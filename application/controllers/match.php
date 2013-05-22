@@ -2,7 +2,7 @@
 
 class Match extends CI_Controller {
 
-	public function index($id)
+	public function index($id = FALSE)
 	{		
 		echo $id;
 		$this->load->helper('xml');
