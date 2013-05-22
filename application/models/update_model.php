@@ -9,7 +9,7 @@ class Update_model extends CI_Model
         }
         function updateMatches($data)
         {
-            //var_dump($data);
+            $this->db->empty_table('dota_matches'); 
             $this->db->insert('dota_matches',$data);
         }
     }
