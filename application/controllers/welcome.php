@@ -21,18 +21,15 @@ class Welcome extends CI_Controller {
 	{
 		//$this->load->view('welcome_message');
 		$this->load->model('welcome_model');
-		$this->load->helper('xml');
-		$url = "heroes.xml";
-		$xml = file_get_contents($url);
-		$data['heroes'] = new SimpleXMLElement($xml);
+		$this->load->model('hero_model');
 		
 		//$this->load->helper('xml');
 		//$url = "https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v001/?key=C2F12A9910099D2B914436795669B1F1&format=XML";
 		//$xml = file_get_contents($url);
 		//$data['matches'] = new SimpleXMLElement($xml);
-		
-		xml_convert($data['heroes']);
+				
 		//xml_convert($data['matches']);
+		$data['heroes'] = $this->hero_model->getHeroes();
 		$data['matches'] = $this->welcome_model->getMatches()->result();
 		
         return $this->load->view($view, $data); 

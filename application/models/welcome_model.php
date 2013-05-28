@@ -7,6 +7,7 @@ class Welcome_model extends CI_Model
             parent::__construct();
 			$this->load->database();
         }
+        
         function getMatches()
         {
             return $this->db->get('dota_matches');
