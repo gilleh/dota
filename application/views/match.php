@@ -71,8 +71,13 @@ img {
 
 	echo '<div class="matchbox">';
 	echo "<div>Match Id: ".$match_id.' <a href="../">Back</a></div>';
-	echo "Match type: ".$matchtype[(int)$match->lobby_type].'<br>';
-	echo "Dire<br>";
+	echo "Match type: ".$matchtype[(int)$match->lobby_type].'<br>';	
+	if ($match->radiant_win != "true")
+	{
+		echo '<div style="color:green;">Dire</div>';
+	} else {
+		echo '<div style="color:red;">Dire</div>';		
+	}
 	for ($x=0;$x<count($match->players->player);$x++)
 	{
 		if ($match->players->player[$x]->player_slot >= 0 && $match->players->player[$x]->player_slot < 5)
@@ -80,7 +85,12 @@ img {
 			echo '<div class="herobox">'.$heroes[(int)$match->players->player[$x]->hero_id][0].'<br><img src="'.$heroes[(int)$match->players->player[$x]->hero_id][1].'"/></div>';
 		}
 	}
-	echo "<br>Radiant<br>";
+	if ($match->radiant_win == "true")
+	{
+		echo '<div style="color:green;">Radiant</div>';
+	} else {
+		echo '<div style="color:red;">Radiant</div>';
+	}
 	for ($x=0;$x<count($match->players->player);$x++)
 	{
 		if ($match->players->player[$x]->player_slot > 5)
@@ -90,7 +100,7 @@ img {
 	}
 	?>
     <ul>
-    <li>Season:  <?php echo	$match->season;?></li>
+    <?php //echo '<li>Season: '.$match->season.'</li>'; ?>
  
     <?php
 	if ($match->radiant_win == "true")
@@ -112,21 +122,18 @@ img {
 	echo '<li>Tower status Dire: '.decbin($match->tower_status_dire).'</li>';
 	echo '<li>Barracks status Radiant: '.decbin($match->barracks_status_radiant).'</li>';
 	echo '<li>Barracks status Dire: '.decbin($match->barracks_status_dire).'</li>';
-	echo '<li>Cluster: '.$match->cluster.'</li>';
+	//echo '<li>Cluster: '.$match->cluster.'</li>';
 	$hours = "0".floor($match->first_blood_time / 3600);	
 	$mins = floor(($match->first_blood_time - ($hours*3600)) / 60);	
 	$secs = ($match->first_blood_time%60);
 	$fb = new DateTime(date('Y-m-d',(int)$match->start_time).' '.(int)$hours.':'.(int)$mins.':'.(int)$secs);	
 	echo '<li>First blood time: '.$fb->format('i:s').'</li>';
-	echo '<li>Lobby type: '.$match->lobby_type.'</li>';
-	echo '<li>Human players: '.$match->human_players.'</li>';
-	echo '<li>League id: '.$match->leagueid.'</li>';
+	//echo '<li>Human players: '.$match->human_players.'</li>';
+	//echo '<li>League id: '.$match->leagueid.'</li>';
 	echo '<li>Positive votes: '.$match->positive_votes.'</li>';
 	echo '<li>Negative votes: '.$match->negative_votes.'</li>';
 	echo '<li>Game mode: '.$gamemode[(int)$match->game_mode].'</li>';
 	echo '</div>';
-
-
 ?>
 </ul>
 </div>
